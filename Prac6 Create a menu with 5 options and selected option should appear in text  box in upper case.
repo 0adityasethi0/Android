@@ -1,0 +1,78 @@
+activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout 
+xmlns:android="http://schemas.android.com/apk/res/android" 
+xmlns:app="http://schemas.android.com/apk/res-auto" 
+xmlns:tools="http://schemas.android.com/tools" 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+tools:context=".MainActivity">
+<RelativeLayout 
+android:layout_width="match_parent" 
+android:layout_height="match_parent" 
+android:layout_margin="80dp" 
+app:layout_constraintBottom_toBottomOf="parent
+" app:layout_constraintLeft_toLeftOf="parent" 
+app:layout_constraintRight_toRightOf="parent"
+app:layout_constraintTop_toTopOf="parent"> 
+<EditText
+android:layout_width="match_parent" 
+android:layout_height="wrap_content" 
+android:id="@+id/etMenuItem" 
+android:layout_centerInParent="true" 
+android:hint="Select an Option from the Menu" 
+android:textAlignment="center" 
+android:gravity="center_horizontal" />
+</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+MainActivity.java package 
+com.example.helloworld;
+import androidx.appcompat.app.AppCompatActivity; 
+import android.os.Bundle; import 
+android.view.Menu; import 
+android.view.MenuInflater; import 
+android.view.MenuItem; import 
+android.widget.EditText;
+public class MainActivity extends AppCompatActivity {
+private EditText etMenuItem;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState); 
+setContentView(R.layout.activity_main);
+etMenuItem=(EditText) findViewById(R.id.etMenuItem);
+}
+@Override
+public boolean onCreateOptionsMenu(Menu menu){ 
+MenuInflater inflater=getMenuInflater(); 
+inflater.inflate(R.menu.main_menu,menu);
+return true;
+}
+@Override
+public boolean onOptionsItemSelected(MenuItem item){
+etMenuItem.setText(item.getTitle().toString().toUpperCase()); 
+return super.onOptionsItemSelected(item);
+}
+}
+main_menu.xml
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item android:id="@+id/miSettings" 
+android:title="@string/settings" 
+/>
+<item android:id="@+id/miBackup" 
+android:title="@string/backup" 
+/>
+<item android:id="@+id/miReset" 
+android:title="@string/reset" 
+/>
+<item 
+android:id="@+id/miAbout" 
+android:title="@string/ab
+out" />
+<item android:id="@+id/miHelp" 
+android:title="@string/help" 
+/>
+</menu>
